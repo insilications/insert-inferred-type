@@ -1,0 +1,78 @@
+{
+  "name": "insert-inferred-type",
+  "displayName": "Insert Inferred Type",
+  "description": "Inserts the inferred type of a untyped variable in typescript files. This extension is just a modified version of the 'typescript-explicit-types' extension by nick-lvov-dev.",
+  "version": "0.0.10",
+  "icon": "res/logo.png",
+  "publisher": "christiaan-du-preez",
+  "repository": "https://github.com/Christiaan-code/insert-inferred-type",
+  "engines": {
+    "vscode": "^1.110.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./dist/extension.cjs",
+  "files": [
+    "LICENSE.md",
+    "dist/*",
+    "res/*"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.insertInferredType",
+        "title": "Insert Inferred Type"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.insertInferredType",
+        "key": "cmd+shift+ctrl+t",
+        "mac": "cmd+shift+ctrl+t",
+        "when": "editorTextFocus && editorLangId == 'typescript'"
+      }
+    ],
+    "configuration": {
+      "title": "Insert Inferred Type",
+      "properties": {
+        "insertInferredType.preferable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Mark type insertion actions as preferable."
+        },
+        "insertInferredType.formatAfterInsertion": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run document format action after a type has been inserted."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/lodash.uniqwith": "^4.5.9",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^25.5.2",
+    "@types/vscode": "^1.110.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.0",
+    "@typescript-eslint/parser": "^8.58.0",
+    "eslint": "^10.2.0",
+    "glob": "^13.0.6",
+    "mocha": "^11.7.5",
+    "tsdown": "^0.21.7",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "lodash.uniqwith": "^4.5.0"
+  }
+}
